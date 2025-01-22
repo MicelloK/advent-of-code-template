@@ -55,4 +55,6 @@ def get_input(year: int, day: int) -> str:
     session.cookies.update(cookies)
 
     response = session.get(f'https://adventofcode.com/{year}/day/{day}/input')
-    return response.content.decode(encoding=response.encoding)
+    if response.ok:
+        return response.content.decode(encoding=response.encoding)
+    raise RuntimeError('Failed to download data. Check if session cookie is set.')
