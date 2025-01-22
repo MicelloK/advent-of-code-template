@@ -21,10 +21,15 @@ class BasePuzzle(ABC):
     def solve(self, data: str) -> PuzzleResult:
         parsed_data = self._parse_data(data)
 
-        puzzle1_result = self._puzzle1(**parsed_data)
-        puzzle2_result = self._puzzle2(**parsed_data)
-
+        puzzle1_result = BasePuzzle._solve_puzzle(self._puzzle1, parsed_data)
+        puzzle2_result = BasePuzzle._solve_puzzle(self._puzzle2, parsed_data)
         return PuzzleResult(name=self._puzzle_name, p1_result=puzzle1_result, p2_result=puzzle2_result)
+    
+    def _solve_puzzle(puzzle_method, parsed_data) -> Any:
+        try:
+            return puzzle_method(**parsed_data)
+        except NotImplementedError:
+            return 'Not implemented'
 
     @abstractmethod
     def _parse_data(self, data: str) -> Dict[str, Any]:

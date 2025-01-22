@@ -45,7 +45,7 @@ def process_puzzle(year: int, day: int) -> utils.PuzzleResult:
         puzzle_name = puzzle._puzzle_name
         data = utils.get_input(day)
         return puzzle.solve(data)
-    except (NotImplementedError, ModuleNotFoundError):
+    except ModuleNotFoundError:
         return utils.PuzzleResult(name=puzzle_name, p1_result='Not implemented', p2_result='Not implemented')
     
 def calculate_results(year: int) -> List[utils.PuzzleResult]:
