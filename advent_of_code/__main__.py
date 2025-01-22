@@ -15,7 +15,7 @@ def parse_args():
 
 def create_table(title: str, results: List[utils.PuzzleResult]) -> Table:
     table = Table(title=title)
-    table.add_column('Puzzle Name', style='cyan', justify='center')
+    table.add_column('Puzzle Name', style='cyan', justify='left')
     table.add_column('Puzzle 1 Result', style='green', justify='right')
     table.add_column('Puzzle 2 Result', style='yellow', justify='right')
 
@@ -24,10 +24,15 @@ def create_table(title: str, results: List[utils.PuzzleResult]) -> Table:
 
     return table
 
+def get_day_str(day: int) -> str:
+    if day < 10:
+        return f"0{day}"
+    return str(day)
+
 def process_puzzle(year: int, day: int) -> utils.PuzzleResult:
-    puzzle_name = f"Day {day}"
+    puzzle_name = f"Day {get_day_str(day)}"
     try:
-        module = importlib.import_module(f"puzzles{year}.day{day}")
+        module = importlib.import_module(f"puzzles{year}.day{get_day_str(day)}")
         puzzle: utils.BasePuzzle = module.Puzzle()
         puzzle_name = puzzle._puzzle_name
         data = utils.get_input(day)
