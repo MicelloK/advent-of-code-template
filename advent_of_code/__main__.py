@@ -14,7 +14,7 @@ def parse_args():
     return parser.parse_args()
 
 def create_table(title: str, results: List[utils.PuzzleResult]) -> Table:
-    table = Table(title=title)
+    table = Table(title=title, padding=(0, 2))
     table.add_column('Puzzle Name', style='cyan', justify='left')
     table.add_column('Puzzle 1 Result', style='green', justify='right')
     table.add_column('Puzzle 2 Result', style='yellow', justify='right')
