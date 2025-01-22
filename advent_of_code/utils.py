@@ -44,7 +44,7 @@ class BasePuzzle(ABC):
         pass
 
 @lru_cache(maxsize=None)
-def get_input(day_num: int) -> str:
+def get_input(year: int, day: int) -> str:
     dotenv.load_dotenv()
 
     session = requests.session()
@@ -54,5 +54,5 @@ def get_input(day_num: int) -> str:
     cookies = cookiejar_from_dict(cookies)
     session.cookies.update(cookies)
 
-    response = session.get(f'https://adventofcode.com/2024/day/{day_num}/input')
+    response = session.get(f'https://adventofcode.com/{year}/day/{day}/input')
     return response.content.decode(encoding=response.encoding)

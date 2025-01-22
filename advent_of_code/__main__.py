@@ -43,7 +43,7 @@ def process_puzzle(year: int, day: int) -> utils.PuzzleResult:
         module = importlib.import_module(f"puzzles{year}.day{get_day_str(day)}")
         puzzle: utils.BasePuzzle = module.Puzzle()
         puzzle_name = puzzle._puzzle_name
-        data = utils.get_input(day)
+        data = utils.get_input(year, day)
         return puzzle.solve(data)
     except ModuleNotFoundError:
         return utils.PuzzleResult(name=puzzle_name, p1_result='Not implemented', p2_result='Not implemented')
