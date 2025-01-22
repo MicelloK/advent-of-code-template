@@ -52,4 +52,4 @@ $ python3 advent_of_code -y <year>
 
 ## Results
 
-![Result](res2.gif)
+![Result](https://github.com/MicelloK/advent-of-code-template/blob/7e543d4f43f4d92610bd5ce3d200b2e4be6805c5/res.gif)
