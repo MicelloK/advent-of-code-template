@@ -57,4 +57,5 @@ if __name__ == '__main__':
     results = calculate_results(args.year)
 
     result_table = create_table(f"Advent of Code {args.year}", results)
+    print()
     Console().print(result_table)
