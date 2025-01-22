@@ -49,3 +49,7 @@ $ poetry shell
 # Run script
 $ python3 advent_of_code -y <year>
 ```
+
+## Results
+
+![Result](res2.gif)
