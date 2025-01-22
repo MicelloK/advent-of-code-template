@@ -1,5 +1,6 @@
 import importlib
 import argparse
+import datetime
 from typing import List
 from concurrent.futures import ThreadPoolExecutor
 
@@ -8,9 +9,16 @@ from rich.table import Table
 
 from advent_of_code import utils
 
+def aoc_editions() -> List[int]:
+    current_date = datetime.datetime.now().date()
+    last_year = current_date.year
+    if current_date.month < 12:
+        last_year -= 1
+    return list(range(2015, last_year+1))
+
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-y', '--year', type=int)
+    parser.add_argument('-y', '--year', default=2015, choices=aoc_editions(), type=int)
     return parser.parse_args()
 
 def create_table(title: str, results: List[utils.PuzzleResult]) -> Table:
